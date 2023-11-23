@@ -11,11 +11,11 @@ namespace BookShopWPF
 	public partial class ShopDB : DbContext
 	{
 		public DbSet<Client> Clients { get; set; }
-		// DbSet для других моделей
+		
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=your_server;Database=ShopDB;Trusted_Connection=True;");
+			optionsBuilder.UseSqlServer(@"Server=laptop-npjv5e48;Database=ShopDB;Trusted_Connection=True;");
 		}
 	}
 }
