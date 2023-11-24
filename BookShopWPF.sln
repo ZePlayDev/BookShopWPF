@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33122.133
+VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShopWPF", "BookShopWPF.csproj", "{E9CAC200-F588-42FE-A8EE-51E01279D5F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShopWPF", "BookShopWPF.csproj", "{27CC013C-2DD0-4AEE-BD52-ADE7FA619F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E9CAC200-F588-42FE-A8EE-51E01279D5F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9CAC200-F588-42FE-A8EE-51E01279D5F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9CAC200-F588-42FE-A8EE-51E01279D5F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9CAC200-F588-42FE-A8EE-51E01279D5F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27CC013C-2DD0-4AEE-BD52-ADE7FA619F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27CC013C-2DD0-4AEE-BD52-ADE7FA619F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27CC013C-2DD0-4AEE-BD52-ADE7FA619F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27CC013C-2DD0-4AEE-BD52-ADE7FA619F76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {848DE423-7C84-47FE-80F3-82106083AA9C}
+		SolutionGuid = {5EE29882-BA83-4350-9FA3-E4EBA55189F1}
 	EndGlobalSection
 EndGlobal
