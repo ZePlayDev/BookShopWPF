@@ -65,7 +65,6 @@ namespace BookShopWPF
 		public Client Client { get; set; }
 		public ICollection<OrderDetails> OrderDetails { get; set; }
 
-		// Конструктор для инициализации коллекции
 		public Orders()
 		{
 			OrderDetails = new HashSet<OrderDetails>();
