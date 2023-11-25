@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,57 @@ namespace BookShopWPF
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer(@"Server=laptop-npjv5e48;Database=ShopDB;Trusted_Connection=True;");
+			optionsBuilder.UseSqlServer(@"Server=DESKTOP-FSQ68S6\SQLEXPRESS;Database=ShopDB;Trusted_Connection=True;");
 		}
 
+        public List<Client> GetClients()
+        {
+            return Clients.ToList();
+        }
 
-	}
+        public List<Product> GetProducts()
+        {
+            return Products.ToList();
+        }
+
+        public List<Category> GetCategories()
+        {
+            return Categories.ToList();
+        }
+
+        public List<Manufacturer> GetManufacturers()
+        {
+            return Manufacturers.ToList();
+        }
+
+        public List<ProductPhoto> GetProductPhotos()
+        {
+            return ProductPhotos.ToList();
+        }
+
+        public List<Orders> GetOrders()
+        {
+            return Orders.ToList();
+        }
+
+        public List<OrderDetails> GetOrderDetails()
+        {
+            return OrderDetails.ToList();
+        }
+
+        public List<PickupPoint> GetPickupPoints()
+        {
+            return PickupPoints.ToList();
+        }
+
+        public List<OrderPickup> GetOrderPickups()
+        {
+            return OrderPickups.ToList();
+        }
+
+        public List<Staff> GetStaff()
+        {
+            return Staff.ToList();
+        }
+    }
 }
