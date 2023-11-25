@@ -1,5 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,8 +18,7 @@ namespace BookShopWPF
 {
     public partial class MainWindow : Window
     {
-		public static ShopDB context = new ShopDB();
-		public MainWindow()
+        public MainWindow()
         {
             InitializeComponent();
             LoadData();
@@ -28,12 +26,12 @@ namespace BookShopWPF
 
         private void LoadData()
         {
-           
+            var context = new ShopDbContext(); 
             // Предполагая, что вы хотите загрузить данные клиентов
-            dataGrid.ItemsSource = context.GetAllClients();
+            dataGrid.ItemsSource = context.GetClients();
 
             // Если вы хотите загрузить данные продуктов, используйте следующую строку вместо предыдущей:
-            // dataGrid.ItemsSource = context.GetProducts();
+            dataGrid.ItemsSource = context.GetProducts();
         }
     }
 }
