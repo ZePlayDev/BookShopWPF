@@ -33,5 +33,7 @@ namespace BookShopWPF
             // Если вы хотите загрузить данные продуктов, используйте следующую строку вместо предыдущей:
             dataGrid.ItemsSource = context.GetProducts();
         }
+
     }
 }
+

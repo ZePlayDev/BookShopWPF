@@ -8,21 +8,19 @@ namespace BookShopWPF;
 
 // ЧТОБЫ СОЗДАТЬ ТАБЛИЦЫ В БД POSTGRESQL НАДО
 // 1. СРЕДСТВА -> ДИСПЕТЧЕР ПАКЕТОВ -> КОНСОЛЬ
-// 2. Add-Migration meow
-// 3. Update-Database
+// 2. Scaffold-DbContext "Ваша строка подключения" Npgsql.EntityFrameworkCore.PostgreSQL
+// 3. Add-Migration meow
+// 4. Update-Database
 
 public partial class ShopDbContext : DbContext
 {
     public DbSet<Client> Clients { get; set; }
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Manager> Managers { get; set; }
+    public DbSet<Administrator> Administrators { get; set; }
+	public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Manufacturer> Manufacturers { get; set; }
     public DbSet<ProductPhoto> ProductPhotos { get; set; }
-    public DbSet<Orders> Orders { get; set; }
-    public DbSet<OrderDetails> OrderDetails { get; set; }
-    public DbSet<PickupPoint> PickupPoints { get; set; }
-    public DbSet<OrderPickup> OrderPickups { get; set; }
-    public DbSet<Staff> Staff { get; set; }
 
     public ShopDbContext()
     {
@@ -34,7 +32,7 @@ public partial class ShopDbContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=1");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,6 +43,10 @@ public partial class ShopDbContext : DbContext
 
     public List<Client> GetClients() => Clients.ToList();
 
+    public List<Manager> GetManagers() => Managers.ToList();
+
+    public List<Administrator> GetAdministrators => Administrators.ToList();
+
     public List<Product> GetProducts() => Products.ToList();
 
     public List<Category> GetCategories() => Categories.ToList();
@@ -53,13 +55,4 @@ public partial class ShopDbContext : DbContext
 
     public List<ProductPhoto> GetProductPhotos() => ProductPhotos.ToList();
 
-    public List<Orders> GetOrders() => Orders.ToList();
-
-    public List<OrderDetails> GetOrderDetails() => OrderDetails.ToList();
-
-    public List<PickupPoint> GetPickupPoints() => PickupPoints.ToList();
-
-    public List<OrderPickup> GetOrderPickups() => OrderPickups.ToList();
-
-    public List<Staff> GetStaff() => Staff.ToList();
 }
