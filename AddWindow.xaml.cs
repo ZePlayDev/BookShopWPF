@@ -26,6 +26,18 @@ namespace BookShopWPF
 
 		public void AddProduct()
 		{
+			if (string.IsNullOrEmpty(NameBox.Text)||
+				string.IsNullOrEmpty(DescriptionBox.Text)||
+				string.IsNullOrEmpty(PriceBox.Text)||
+				string.IsNullOrEmpty(QuantityBox.Text)||
+				string.IsNullOrEmpty(CategoryIDBox.Text)||
+				string.IsNullOrEmpty(ManufacturerBox.Text)
+				)
+			{
+				MessageBox.Show("Заполните все поля");
+				return;
+			}
+
 
 		}
 		public void Cancel()
