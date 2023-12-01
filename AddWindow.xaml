@@ -21,7 +21,7 @@
         <TextBox x:Name="CategoryIDBox" HorizontalAlignment="Left" Margin="242,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
         <TextBox x:Name="ManufacturerBox" HorizontalAlignment="Left" Margin="242,277,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Margin="44,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="AddProduct"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="171,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="Cansel"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="171,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="Cancel"/>
         
     </Grid>
 </Window>

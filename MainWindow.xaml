@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Book Shop" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGrid" AutoGenerateColumns="True"/>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="True" Margin="0,0,0,97" SelectionChanged="dataGrid_SelectionChanged"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Margin="237,383,0,0" VerticalAlignment="Top" Height="17" Width="68" Click="AddProduct"/>
     </Grid>
 </Window>
