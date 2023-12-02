@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\
 BookShopWPF
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\App.xaml
-2755612104
+C:\GitHub\BookShopWPF\App.xaml
+4-2136153476
 
-131339801445
-2121170780874
-AddWindow.xaml;MainWindow.xaml;
+14-1790666449
+2125072633
+AddWindow.xaml;AutorizationWindow.xaml;CreateWindow.xaml;MainWindow.xaml;
 
 False
 

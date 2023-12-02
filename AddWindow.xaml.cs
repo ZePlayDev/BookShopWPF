@@ -1,25 +1,16 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BookShopWPF
 {
-	/// <summary>
-	/// Логика взаимодействия для AddWindow.xaml
-	/// </summary>
-	public partial class AddWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для AddWindow.xaml
+    /// </summary>
+	/// 
+
+	//Вы долбаебы? нахуя энтити фреймворк тогда, если вы так хардкодите
+    public partial class AddWindow : Window
 	{
 		public AddWindow()
 		{

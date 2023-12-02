@@ -22,27 +22,6 @@ namespace BookShopWPF.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BookShopWPF.Administrator", b =>
-                {
-                    b.Property<int>("AdminID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("AdminID"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("AdminID");
-
-                    b.ToTable("Administrators");
-                });
-
             modelBuilder.Entity("BookShopWPF.Category", b =>
                 {
                     b.Property<int>("CategoryID")
@@ -58,48 +37,6 @@ namespace BookShopWPF.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("BookShopWPF.Client", b =>
-                {
-                    b.Property<int>("ClientID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ClientID"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ClientID");
-
-                    b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("BookShopWPF.Manager", b =>
-                {
-                    b.Property<int>("ManagerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ManagerID"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ManagerID");
-
-                    b.ToTable("Managers");
                 });
 
             modelBuilder.Entity("BookShopWPF.Manufacturer", b =>
@@ -191,6 +128,30 @@ namespace BookShopWPF.Migrations
                     b.HasIndex("ProductID1");
 
                     b.ToTable("ProductPhotos");
+                });
+
+            modelBuilder.Entity("BookShopWPF.User", b =>
+                {
+                    b.Property<int>("ClientID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ClientID"));
+
+                    b.Property<int>("Access")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ClientID");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("BookShopWPF.Product", b =>

@@ -1,34 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShopWPF
 {
-	public class Client
+    public class User
 	{
-        [Key] public int ClientID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ClientID { get; set; }
 		public string Name { get; set; }
 		public string Password { get; set; }
-	}
-
-	public class Manager
-	{
-		[Key] public int ManagerID { get; set; }
-		public string Name { get; set; }
-		public string Password { get; set; }
-	}
-
-	public class Administrator
-	{
-		[Key] public int AdminID { get; set; }
-		public string Name { get; set; }
-		public string Password { get; set; }
-	}
+        public int Access { get; set; }
+    }
 
 	
 	public class Product

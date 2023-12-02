@@ -14,13 +14,15 @@ namespace BookShopWPF;
 
 public partial class ShopDbContext : DbContext
 {
-    public DbSet<Client> Clients { get; set; }
-    public DbSet<Manager> Managers { get; set; }
-    public DbSet<Administrator> Administrators { get; set; }
+    private static ShopDbContext instance;
+
+    public DbSet<User> Users { get; set; }
 	public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Manufacturer> Manufacturers { get; set; }
     public DbSet<ProductPhoto> ProductPhotos { get; set; }
+
+    private int activeUserID;
 
     public ShopDbContext()
     {
@@ -31,8 +33,18 @@ public partial class ShopDbContext : DbContext
     {
     }
 
+    public static ShopDbContext Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = new ShopDbContext();
+            return instance;
+        }
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=1");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,11 +53,7 @@ public partial class ShopDbContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-    public List<Client> GetClients() => Clients.ToList();
-
-    public List<Manager> GetManagers() => Managers.ToList();
-
-    public List<Administrator> GetAdministrators => Administrators.ToList();
+    public List<User> GetUsers() => Users.ToList();
 
     public List<Product> GetProducts() => Products.ToList();
 
@@ -54,5 +62,11 @@ public partial class ShopDbContext : DbContext
     public List<Manufacturer> GetManufacturers() => Manufacturers.ToList();
 
     public List<ProductPhoto> GetProductPhotos() => ProductPhotos.ToList();
+
+    public void SetActiveUser(int id) 
+        => activeUserID = id;
+
+    public bool CanGetAccess(AccessLevels reqLevel) 
+        => Users.Where(x => x.ClientID == activeUserID).First().Access >= (int)reqLevel;
 
 }

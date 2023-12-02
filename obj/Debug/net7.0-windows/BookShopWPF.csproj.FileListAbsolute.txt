@@ -139,3 +139,10 @@ C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Deb
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\AddWindow.g.cs
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\BookShopWPF_MarkupCompile.lref
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\AddWindow.baml
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AddWindow.g.cs
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\BookShopWPF_MarkupCompile.lref
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AddWindow.baml
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.g.cs
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.g.cs
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.baml
+C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.baml
