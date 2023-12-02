@@ -41,8 +41,8 @@ namespace BookShopWPF
 			}
 
 			string connectionString = "Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15;";
-			string author = ManufacturerBox.Text; // Предполагаем, что AuthorBox - это ваш TextBox для автора
-			string name = NameBox.Text; // Предполагаем, что NameBox - это ваш TextBox для названия
+			string author = ManufacturerBox.Text; 
+			string name = NameBox.Text;
 
 			if (!IsProductUnique(author, name))
 			{
@@ -66,11 +66,15 @@ namespace BookShopWPF
 					command.ExecuteNonQuery();
 				}
 			}
+			MainWindow mainWindow = new MainWindow();
+			mainWindow.Show();
+			
+			this.Close();
 		}
 		public bool IsProductUnique(string author, string name)
 		{
 			string connectionString = "Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15;";
-			string sql = "SELECT COUNT(*) FROM Products WHERE Manufacturer = @Manufacturer AND Name = @Name";
+			string sql = "SELECT COUNT(*) FROM \"Products\" WHERE \"ManufacturerID\" = @Manufacturer AND \"Name\" = @Name";
 
 			using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
 			{

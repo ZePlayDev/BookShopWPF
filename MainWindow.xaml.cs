@@ -24,11 +24,11 @@ namespace BookShopWPF
             LoadData();
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             var context = new ShopDbContext(); 
-            // Предполагая, что вы хотите загрузить данные клиентов
-            dataGrid.ItemsSource = context.GetClients();
+           
+            //dataGrid.ItemsSource = context.GetClients();
 
             // Если вы хотите загрузить данные продуктов, используйте следующую строку вместо предыдущей:
             dataGrid.ItemsSource = context.GetProducts();
@@ -38,6 +38,7 @@ namespace BookShopWPF
             AddWindow addWindow = new AddWindow();
 
             addWindow.Show();
+            this.Close();
         }
 
 		private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
