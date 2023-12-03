@@ -40,6 +40,8 @@ namespace BookShopWPF
                 return;
             }
 
+            ShopDbContext.Instance.SetActiveUser(user.ClientID);
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
