@@ -146,3 +146,7 @@ C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.g.cs
 C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.g.cs
 C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.baml
 C:\GitHub\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.baml
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.baml
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.baml
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.g.cs
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.g.cs

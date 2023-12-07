@@ -21,8 +21,8 @@ namespace BookShopWPF
             if (string.IsNullOrWhiteSpace(Email.Text)) message += "Неверное форматирование почты\n";
             if (string.IsNullOrWhiteSpace(Password.Text)) message += "Неверное форматирование пароля\n";
 
-            if(ShopDbContext.Instance.Users.Where(x => x.Name == Email.Text.Trim()).FirstOrDefault() != null) 
-                message += "Пользователь уже существует";
+            //if(ShopDbContext.Instance.Users.Where(x => x.Name == Email.Text.Trim()).FirstOrDefault() != null) 
+            //    message += "Пользователь уже существует";
 
             if (!string.IsNullOrWhiteSpace(message))
             {
@@ -37,6 +37,10 @@ namespace BookShopWPF
                 Access = Access.SelectedIndex
             });
             ShopDbContext.Instance.SaveChanges();
+
+
+
+
 
             AutorizationWindow auth = new AutorizationWindow();
             auth.Show();

@@ -44,7 +44,7 @@ public partial class ShopDbContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=1");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -4,21 +4,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookShopWPF
 {
-    public class User
+	public class User
 	{
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ClientID { get; set; }
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int ClientID { get; set; }
 		public string Name { get; set; }
 		public string Password { get; set; }
-        public int Access { get; set; }
-    }
+		public int Access { get; set; }
+	}
 
-	
+
+
 	public class Product
 	{
 		[Key]
-        public int ProductID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int ProductID { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
 		public decimal Price { get; set; }
@@ -31,14 +33,15 @@ namespace BookShopWPF
 	public class Category
 	{
 		[Key]
-        public int CategoryID { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int CategoryID { get; set; }
 		public string Name { get; set; }
 		public ICollection<Product> Products { get; set; }
 	}
 
 	public class Manufacturer
 	{
-        [Key] public int ManufactererID { get; set; }
+		[Key][DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int ManufactererID { get; set; }
 		public string Name { get; set; }
 		public string Address { get; set; }
 		public string ContactInfo { get; set; }
@@ -46,6 +49,8 @@ namespace BookShopWPF
 
 	public class ProductPhoto
 	{
+		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int ProductPhotoID { get; set; }
 		public string ProductID { get; set; }
 		public string FilePath { get; set; }
