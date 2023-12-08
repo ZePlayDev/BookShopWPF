@@ -8,22 +8,26 @@
         mc:Ignorable="d"
         Title="AddWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="AddBlockName" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Добавление нового продукта" VerticalAlignment="Top" Height="35" Width="348" Margin="0,10,0,0" TextAlignment="Center" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,95,0,0" TextWrapping="Wrap" Text="Введите название продукта" VerticalAlignment="Top" Width="173"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,129,0,0" TextWrapping="Wrap" Text="Введите описание продукта" VerticalAlignment="Top" Width="173"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="109*"/>
+            <ColumnDefinition Width="291*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="AddBlockName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Добавление нового продукта" VerticalAlignment="Top" Height="35" Width="348" Margin="8,10,0,0" TextAlignment="Center" FontSize="20" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,95,0,323" TextWrapping="Wrap" Text="Введите название продукта" Width="173"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,129,0,289" TextWrapping="Wrap" Text="Введите описание продукта" Width="173"/>
         <TextBlock HorizontalAlignment="Left" Margin="35,180,0,0" TextWrapping="Wrap" Text="Введите цену продукта" VerticalAlignment="Top" Width="173"/>
         <TextBlock HorizontalAlignment="Left" Margin="35,0,0,0" TextWrapping="Wrap" Text="Введите количество продукта" VerticalAlignment="Center" Width="173"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,243,0,0" TextWrapping="Wrap" Text="Введите категории продукта" VerticalAlignment="Top" Width="202"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,279,0,0" TextWrapping="Wrap" Text="Введите автора продукта" VerticalAlignment="Top" Width="202"/>
-        <TextBox Name="NameBox" HorizontalAlignment="Left" Margin="242,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
-        <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Margin="242,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="496" Height="41"/>
-        <TextBox x:Name="PriceBox" HorizontalAlignment="Left" Margin="242,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
-        <TextBox x:Name="QuantityBox" HorizontalAlignment="Left" Margin="242,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="224"/>
-        <TextBox x:Name="CategoryIDBox" HorizontalAlignment="Left" Margin="242,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
-        <TextBox x:Name="ManufacturerBox" HorizontalAlignment="Left" Margin="242,277,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,243,0,0" TextWrapping="Wrap" Text="Введите категории продукта" VerticalAlignment="Top" Width="202" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,279,0,0" TextWrapping="Wrap" Text="Введите автора продукта" VerticalAlignment="Top" Width="202" Grid.ColumnSpan="2"/>
+        <TextBox Name="NameBox" HorizontalAlignment="Left" Margin="24,95,0,321" TextWrapping="Wrap" Text="" Width="224" Grid.Column="1"/>
+        <TextBox x:Name="DescriptionBox" HorizontalAlignment="Left" Margin="24,129,0,264" TextWrapping="Wrap" Text="" Width="496" Grid.Column="1"/>
+        <TextBox x:Name="PriceBox" HorizontalAlignment="Left" Margin="24,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" Grid.Column="1"/>
+        <TextBox x:Name="QuantityBox" HorizontalAlignment="Left" Margin="24,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="224" Grid.Column="1"/>
+        <TextBox x:Name="CategoryIDBox" HorizontalAlignment="Left" Margin="24,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" Grid.Column="1"/>
+        <TextBox x:Name="ManufacturerBox" HorizontalAlignment="Left" Margin="24,277,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" Grid.Column="1"/>
         <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Margin="44,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="AddProduct"/>
-        <Button x:Name="EditButton" Content="Изменить" HorizontalAlignment="Left" Margin="44,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="EditProduct"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="171,389,0,0" VerticalAlignment="Top" Width="92" BorderBrush="Black" Click="Cancel"/>
-        
+        <Button x:Name="EditButton" Content="Изменить" HorizontalAlignment="Left" Margin="44,0,0,25" Width="92" BorderBrush="Black" Click="EditProduct" Height="20" VerticalAlignment="Bottom"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="171,0,0,25" Width="92" BorderBrush="Black" Click="Cancel" Grid.ColumnSpan="2" Height="20" VerticalAlignment="Bottom"/>
+
     </Grid>
 </Window>

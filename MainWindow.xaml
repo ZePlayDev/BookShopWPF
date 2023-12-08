@@ -4,6 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Book List" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="409*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" SelectionMode="Extended" CanUserResizeRows="False" CanUserSortColumns="True" CanUserAddRows="False" Height="349" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="*" MaxWidth="35" MinWidth="15" IsReadOnly="True"/>
@@ -14,10 +18,10 @@
                 <DataGridTextColumn Header="Автор" Binding="{Binding ManufacturerID}" Width="*" MinWidth="250" IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Добавить продукт" MaxWidth="200" MinWidth="150" Margin="23,0,0,27" Width="68" Click="AddProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
-        <Button Content="Редактировать продукт" MaxWidth="200" MinWidth="150" Margin="207,0,0,27" Width="68" Click="EditProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
-        <Button Content="Удалить продукт" MaxWidth="200" MinWidth="150" Margin="389,0,0,27" Width="68" Click="DeleteProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
-        <Button Content="Добавить продукт в корзину" MaxWidth="200" MinWidth="150" Margin="593,0,0,42" Width="172" Click="AddToCart" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
-        <Button Content="Открыть корзину" MaxWidth="200" MinWidth="150" Margin="593,0,0,10" Width="172" Click="OpenCart" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
+        <Button Content="Добавить продукт" MaxWidth="200" MinWidth="150" Margin="23,0,0,2" Width="68" Click="AddProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
+        <Button Content="Редактировать продукт" MaxWidth="200" MinWidth="150" Margin="207,0,0,2" Width="68" Click="EditProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
+        <Button Content="Удалить продукт" MaxWidth="200" MinWidth="150" Margin="389,0,0,2" Width="68" Click="DeleteProduct" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
+        <Button Content="Добавить продукт в корзину" MaxWidth="200" MinWidth="150" Margin="593,0,0,17" Width="172" Click="AddToCart" HorizontalAlignment="Left" Height="17" VerticalAlignment="Bottom"/>
+        <Button Content="Открыть корзину" MaxWidth="200" MinWidth="150" Margin="0,0,35,10" Click="OpenCart" Height="17" VerticalAlignment="Bottom" Grid.RowSpan="2" HorizontalAlignment="Right" Width="172"/>
     </Grid>
 </Window>
