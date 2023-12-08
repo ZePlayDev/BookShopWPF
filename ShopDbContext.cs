@@ -21,8 +21,9 @@ public partial class ShopDbContext : DbContext
     public DbSet<Category> Categories { get; set; }
     public DbSet<Manufacturer> Manufacturers { get; set; }
     public DbSet<ProductPhoto> ProductPhotos { get; set; }
+    public DbSet<Cart> Cart { get; set; }
 
-    private int activeUserID;
+    public int activeUserID { private set; get; }
 
     public ShopDbContext()
     {
@@ -62,6 +63,7 @@ public partial class ShopDbContext : DbContext
     public List<Manufacturer> GetManufacturers() => Manufacturers.ToList();
 
     public List<ProductPhoto> GetProductPhotos() => ProductPhotos.ToList();
+    public List<Cart> GetCarts() => Cart.ToList();
 
     public void SetActiveUser(int id) 
         => activeUserID = id;

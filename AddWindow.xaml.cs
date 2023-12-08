@@ -1,25 +1,31 @@
-﻿using Npgsql;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Npgsql;
 using System;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Windows;
 
 namespace BookShopWPF
 {
-    /// <summary>
-    /// Логика взаимодействия для AddWindow.xaml
-    /// </summary>
+	/// <summary>
+	/// Логика взаимодействия для AddWindow.xaml
+	/// </summary>
 	/// 
 
 	//Вы долбаебы? нахуя энтити фреймворк тогда, если вы так хардкодите
-    public partial class AddWindow : Window
+	public partial class AddWindow : Window
 	{
+		int selectedItemIndex, dataGridIndex;
 		public AddWindow()
 		{
 			InitializeComponent();
+			AddButton.Visibility = Visibility.Visible;
+			EditButton.Visibility = Visibility.Hidden;
+			AddBlockName.Text = "Добавление нового товара";
 		}
 
-		public AddWindow(Product selectedProduct)
+		public AddWindow(Product selectedProduct, int index)
 		{
 			InitializeComponent();
 			NameBox.Text = selectedProduct.Name;
@@ -28,15 +34,76 @@ namespace BookShopWPF
 			QuantityBox.Text = selectedProduct.StockQuantity.ToString();
 			CategoryIDBox.Text = selectedProduct.CategoryID.ToString();
 			ManufacturerBox.Text = selectedProduct.ManufacturerID.ToString();
+			AddButton.Visibility = Visibility.Hidden;
+			EditButton.Visibility = Visibility.Visible;
+			selectedItemIndex = selectedProduct.ProductID;
+			AddBlockName.Text = "Изменение товара";
+			dataGridIndex = index;
+		}
+
+		public void EditProduct(object sender, RoutedEventArgs e)
+		{
+			if (string.IsNullOrEmpty(NameBox.Text) ||
+	string.IsNullOrEmpty(DescriptionBox.Text) ||
+	string.IsNullOrEmpty(PriceBox.Text) ||
+	string.IsNullOrEmpty(QuantityBox.Text) ||
+	string.IsNullOrEmpty(CategoryIDBox.Text) ||
+	string.IsNullOrEmpty(ManufacturerBox.Text)
+	)
+			{
+				MessageBox.Show("Заполните все поля");
+				return;
+			}
+
+
+			Product item;
+			try
+			{
+				item = new Product()
+				{
+					Name = NameBox.Text,
+					Description = DescriptionBox.Text,
+					Price = decimal.Parse(PriceBox.Text),
+					StockQuantity = int.Parse(QuantityBox.Text),
+					CategoryID = CategoryIDBox.Text,
+					ManufacturerID = ManufacturerBox.Text
+				};
+			}
+			catch
+			{
+				MessageBox.Show("Неверное форматирование");
+				return;
+			}
+
+			var selectedItem = ShopDbContext.Instance.Products.First(x => x.ProductID == selectedItemIndex);
+
+			if (selectedItem != null)
+			{
+				selectedItem.ProductID = selectedItemIndex;
+				selectedItem.Name = NameBox.Text;
+				selectedItem.Description = DescriptionBox.Text;
+				selectedItem.Price = decimal.Parse(PriceBox.Text);
+				selectedItem.ManufacturerID = ManufacturerBox.Text;
+				selectedItem.CategoryID = CategoryIDBox.Text;
+				ShopDbContext.Instance.SaveChanges();
+				MainWindow.instance.Items[dataGridIndex].ProductID = selectedItemIndex;
+				MainWindow.instance.Items[dataGridIndex].Name = NameBox.Text;
+				MainWindow.instance.Items[dataGridIndex].Description = DescriptionBox.Text;
+				MainWindow.instance.Items[dataGridIndex].Price = decimal.Parse(PriceBox.Text);
+				MainWindow.instance.Items[dataGridIndex].ManufacturerID = ManufacturerBox.Text;
+				MainWindow.instance.Items[dataGridIndex].CategoryID = CategoryIDBox.Text;
+				MainWindow.instance.LoadData();
+				Close();
+			}
 		}
 
 		public void AddProduct(object sender, EventArgs e)
 		{
-			if (string.IsNullOrEmpty(NameBox.Text)||
-				string.IsNullOrEmpty(DescriptionBox.Text)||
-				string.IsNullOrEmpty(PriceBox.Text)||
-				string.IsNullOrEmpty(QuantityBox.Text)||
-				string.IsNullOrEmpty(CategoryIDBox.Text)||
+			if (string.IsNullOrEmpty(NameBox.Text) ||
+				string.IsNullOrEmpty(DescriptionBox.Text) ||
+				string.IsNullOrEmpty(PriceBox.Text) ||
+				string.IsNullOrEmpty(QuantityBox.Text) ||
+				string.IsNullOrEmpty(CategoryIDBox.Text) ||
 				string.IsNullOrEmpty(ManufacturerBox.Text)
 				)
 			{
@@ -45,7 +112,7 @@ namespace BookShopWPF
 			}
 
 			//string connectionString = "Host=localhost;Port=5432;Database=ShopDB;Username=postgres;Password=OlgaK+15;";
-			string author = ManufacturerBox.Text; 
+			string author = ManufacturerBox.Text;
 			string name = NameBox.Text;
 
 			if (!IsProductUnique(author, name))
@@ -72,26 +139,35 @@ namespace BookShopWPF
 			//}
 			//MainWindow mainWindow = new MainWindow();
 			//mainWindow.Show();
-			Product item = new Product()
+			Product item;
+			try {
+				item = new Product()
+				{
+					Name = NameBox.Text,
+					Description = DescriptionBox.Text,
+					Price = decimal.Parse(PriceBox.Text),
+					StockQuantity = int.Parse(QuantityBox.Text),
+					CategoryID = CategoryIDBox.Text,
+					ManufacturerID = ManufacturerBox.Text
+				};
+			}
+			catch
 			{
-				Name = NameBox.Text,
-				Description = DescriptionBox.Text,
-				Price = decimal.Parse(PriceBox.Text),
-				StockQuantity = int.Parse(QuantityBox.Text),
-				CategoryID = CategoryIDBox.Text,
-				ManufacturerID = ManufacturerBox.Text
-			};
+				MessageBox.Show("Неверное форматирование");
+				return;
+			}
 			ShopDbContext.Instance.Products.Add(item);
 			ShopDbContext.Instance.SaveChanges();
-			MainWindow.StaticItems.Add(new TableRow() {        
-					ProductID = item.ProductID.ToString(),
-					Name = item.Name,
-					Description = item.Description,
-					CategoryID= item.CategoryID,
-					ManufacturerID= item.ManufacturerID,
-					Price = item.Price.ToString(),
-					StockQuantity=item.StockQuantity.ToString()
-				});
+			MainWindow.instance.Items.Add(new TableRow()
+			{
+				ProductID = item.ProductID,
+				Name = item.Name,
+				Description = item.Description,
+				CategoryID = item.CategoryID,
+				ManufacturerID = item.ManufacturerID,
+				Price = item.Price,
+				StockQuantity = item.StockQuantity
+			});
 			this.Close();
 		}
 		public bool IsProductUnique(string author, string name)
@@ -106,7 +182,7 @@ namespace BookShopWPF
 				{
 					command.Parameters.AddWithValue("@Manufacturer", author);
 					command.Parameters.AddWithValue("@Name", name);
-	
+
 					int count = Convert.ToInt32(command.ExecuteScalar());
 					return count == 0;
 				}

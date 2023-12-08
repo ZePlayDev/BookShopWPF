@@ -150,3 +150,5 @@ C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Deb
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.baml
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\AutorizationWindow.g.cs
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CreateWindow.g.cs
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CartWindow.g.cs
+C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\obj\Debug\net7.0-windows\CartWindow.baml

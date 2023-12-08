@@ -27,7 +27,7 @@ namespace BookShopWPF
 		public int StockQuantity { get; set; }
 		public string CategoryID { get; set; }
 		public string ManufacturerID { get; set; }
-		public ICollection<ProductPhoto> ProductPhotos { get; set; }
+		//public ICollection<ProductPhoto> ProductPhotos { get; set; }
 	}
 
 	public class Category
@@ -55,6 +55,13 @@ namespace BookShopWPF
 		public string ProductID { get; set; }
 		public string FilePath { get; set; }
 		public Product Product { get; set; }
+	}
+
+	public class Cart
+	{
+		[Key]
+		public int UserID { get; set; }
+		public List<int> ProductID { get; set; }
 	}
 
 }

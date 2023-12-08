@@ -11,11 +11,11 @@ namespace BookShopWPF
 {
 	public class TableRow
 	{
-		public string ProductID { get; set; }
+		public int ProductID { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		public string Price { get; set; }
-		public string StockQuantity { get; set; }
+		public decimal Price { get; set; }
+		public int StockQuantity { get; set; }
 		public string CategoryID { get; set; }
 		public string ManufacturerID { get; set; }
 
@@ -25,11 +25,12 @@ namespace BookShopWPF
     {
 		public ObservableCollection<TableRow> Items { get; set; }
 
-        public static ObservableCollection<TableRow> StaticItems;
+        public static MainWindow instance;
 
 		public MainWindow()
         {
             InitializeComponent();
+            instance= this;
             LoadData();
         }
 
@@ -37,7 +38,6 @@ namespace BookShopWPF
         {
 			var context = ShopDbContext.Instance;
             Items = new();
-            StaticItems = Items;
 
            // MessageBox.Show(context.GetProducts().Count.ToString());
 
@@ -45,13 +45,13 @@ namespace BookShopWPF
             {
                 Items.Add(new TableRow()
                 {
-                    ProductID = item.ProductID.ToString(), 
+                    ProductID = item.ProductID, 
                     Name = item.Name, 
                     Description = item.Description, 
                     CategoryID= item.CategoryID, 
                     ManufacturerID= item.ManufacturerID, 
-                    Price = item.Price.ToString(), 
-                    StockQuantity=item.StockQuantity.ToString()
+                    Price = item.Price, 
+                    StockQuantity=item.StockQuantity
                 });
               //  MessageBox.Show("Добавлен");
             }
@@ -61,29 +61,98 @@ namespace BookShopWPF
         }
         public void AddProduct(object sender, EventArgs e)
         {
-            AddWindow addWindow = new AddWindow();
+			if (!ShopDbContext.Instance.CanGetAccess(AccessLevels.Admin))
+			{
+				MessageBox.Show("нету прав");
+				return;
+			}
+			AddWindow addWindow = new AddWindow();
 
             addWindow.ShowDialog();
            // Close();
         }
 
-        public void EditProduct(object sender, EventArgs e)
-        {
-			if (dataGrid.SelectedItem != null)
+		public void AddToCart(object sender, EventArgs e)
+		{
+			if (dataGrid.SelectedItem == null) return;
+			var item = dataGrid.SelectedItem as TableRow;
+
+			var cart = ShopDbContext.Instance.Cart.Where(x => x.UserID == ShopDbContext.Instance.activeUserID).FirstOrDefault();
+
+			if (cart == null)
 			{
-                //MessageBox.Show(Items[dataGrid.SelectedIndex].Price);
-                Product selectedProduct = new Product(){
-                    ProductID = int.Parse(Items[dataGrid.SelectedIndex].ProductID),
-                    Name = Items[dataGrid.SelectedIndex].Name,
-                    Description = Items[dataGrid.SelectedIndex].Description,
-                    StockQuantity = int.Parse(Items[dataGrid.SelectedIndex].StockQuantity),
-                    ManufacturerID = Items[dataGrid.SelectedIndex].ManufacturerID,
-                    Price = int.Parse(Items[dataGrid.SelectedIndex].Price),
-                    CategoryID = Items[dataGrid.SelectedIndex].CategoryID
-                };
-				AddWindow addWindow = new AddWindow(selectedProduct);
-				addWindow.ShowDialog();
+				cart = new Cart()
+				{
+					UserID = ShopDbContext.Instance.activeUserID,
+					ProductID = new()
+				};
+				if (!cart.ProductID.Contains(item.ProductID))
+				{
+					cart.ProductID.Add(item.ProductID);
+					ShopDbContext.Instance.Cart.Add(cart);
+					ShopDbContext.Instance.SaveChanges();
+				}
+				else MessageBox.Show("Этот продукт уже добавлен в вашу корзину");
+				
+				return;
 			}
+			if (!cart.ProductID.Contains(item.ProductID))
+			{
+				cart.ProductID.Add(item.ProductID);
+				ShopDbContext.Instance.Cart.Add(cart);
+				ShopDbContext.Instance.SaveChanges();
+			}
+			else MessageBox.Show("Этот продукт уже добавлен в вашу корзину");
+		}
+
+		public void OpenCart(object sender, EventArgs e)
+		{
+			CartWindow cart = new CartWindow();
+			cart.ShowDialog();
+		}
+
+
+		public void EditProduct(object sender, EventArgs e)
+		{
+			if (!ShopDbContext.Instance.CanGetAccess(AccessLevels.Manager))
+			{
+				MessageBox.Show("нету прав");
+				return;
+			}
+
+			if (dataGrid.SelectedItem == null) return;
+
+			var item = dataGrid.SelectedItem as TableRow;
+
+			//MessageBox.Show(Items[dataGrid.SelectedIndex].Price);
+			Product selectedProduct = new Product()
+			{
+				ProductID = item.ProductID,
+				Name = item.Name,
+				Description = item.Description,
+				StockQuantity = item.StockQuantity,
+				ManufacturerID = item.ManufacturerID,
+				Price = item.Price,
+				CategoryID = item.CategoryID
+			};
+			AddWindow addWindow = new AddWindow(selectedProduct, dataGrid.SelectedIndex);
+			addWindow.ShowDialog();
+		}
+
+		public void DeleteProduct(object sender, EventArgs e)
+		{
+			if (!ShopDbContext.Instance.CanGetAccess(AccessLevels.Admin))
+			{
+				MessageBox.Show("нету прав");
+				return;
+			}
+			if (dataGrid.SelectedItem == null) return;
+			var item = dataGrid.SelectedItem as TableRow;
+
+			Product selectedProduct = ShopDbContext.Instance.Products.FirstOrDefault(x => x.ProductID == item.ProductID);
+			ShopDbContext.Instance.Products.Remove(selectedProduct);
+			ShopDbContext.Instance.SaveChanges();
+			LoadData();
 		}
 
 		private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

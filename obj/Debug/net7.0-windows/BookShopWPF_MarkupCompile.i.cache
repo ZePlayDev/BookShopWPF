@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\User\Desktop\Курсовые и дипломная\BookShopWPF\App.xaml
-4-2136153476
+5-249915010
 
-14-1325120748
+151269731756
 2121170780874
-AddWindow.xaml;AutorizationWindow.xaml;CreateWindow.xaml;MainWindow.xaml;
+AddWindow.xaml;AutorizationWindow.xaml;CartWindow.xaml;CreateWindow.xaml;MainWindow.xaml;
 
-False
+True
 

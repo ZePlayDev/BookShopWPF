@@ -13,6 +13,9 @@
     <Compile Update="AutorizationWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CartWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="CreateWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AutorizationWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CartWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CreateWindow.xaml">

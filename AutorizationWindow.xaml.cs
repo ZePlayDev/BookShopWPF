@@ -26,28 +26,26 @@ namespace BookShopWPF
                 MessageBox.Show("Пустой логин или пароль");
                 return;
             }
-           
-				var user = ShopDbContext.Instance.Users.Where(x => x.Name == login_).FirstOrDefault();
 
-				if (user == null)
-				{
-					MessageBox.Show("Пользователя не существует");
-					return;
-				}
+            var user = ShopDbContext.Instance.Users.Where(x => x.Name == login_).FirstOrDefault();
 
-				if (user.Password != password_)
-				{
-					MessageBox.Show("Неправильные данные");
-					return;
-				}
+            if (user == null)
+            {
+                MessageBox.Show("Пользователя не существует");
+                return;
+            }
 
-				ShopDbContext.Instance.SetActiveUser(user.ClientID);
+            if (user.Password != password_)
+            {
+                MessageBox.Show("Неправильные данные");
+                return;
+            }
 
-				MainWindow mainWindow = new MainWindow();
-				mainWindow.Show();
-				Close();
-			
+            ShopDbContext.Instance.SetActiveUser(user.ClientID);
 
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
 
         private void signup_Click(object sender, RoutedEventArgs e)
