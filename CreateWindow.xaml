@@ -14,7 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="280,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="240" TextAlignment="Center" FontSize="22" Foreground="White" Text="Кто ты из танков" Grid.ColumnSpan="3"/>
 
         <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="242,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="25" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBlock IsHitTestVisible="False" Text="Имя*" Margin="242,0,242,233" Foreground="DarkGray" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Bottom">
+        <TextBlock IsHitTestVisible="False" Text="Имя*" Margin="242,126,242,0" Foreground="DarkGray" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Top">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -27,7 +27,7 @@
             </TextBlock.Style>
         </TextBlock>
         <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="242,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="316" Height="25" FontSize="16" Grid.ColumnSpan="3"/>
-        <TextBlock IsHitTestVisible="False" Text="Пароль*" Margin="242,0,242,196" Foreground="DarkGray" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Bottom">
+        <TextBlock IsHitTestVisible="False" Text="Пароль*" Margin="242,163,242,0" Foreground="DarkGray" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Top">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -40,7 +40,7 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <ComboBox x:Name="Access" SelectedIndex="0" Margin="242,0,249,159" Text="" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Bottom">
+        <ComboBox x:Name="Access" SelectedIndex="0" Margin="242,200,249,0" Text="" FontSize="16" Grid.ColumnSpan="3" Height="25" VerticalAlignment="Top">
             <ComboBoxItem FontSize="16">Клиент</ComboBoxItem>
             <ComboBoxItem FontSize="16">Менеджер</ComboBoxItem>
             <ComboBoxItem FontSize="16">Админ</ComboBoxItem>

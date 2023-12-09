@@ -86,23 +86,18 @@ namespace BookShopWPF
 					UserID = ShopDbContext.Instance.activeUserID,
 					ProductID = new()
 				};
-				if (!cart.ProductID.Contains(item.ProductID))
-				{
-					cart.ProductID.Add(item.ProductID);
-					ShopDbContext.Instance.Cart.Add(cart);
-					ShopDbContext.Instance.SaveChanges();
-				}
-				else MessageBox.Show("Этот продукт уже добавлен в вашу корзину");
-				
-				return;
-			}
-			if (!cart.ProductID.Contains(item.ProductID))
-			{
+
 				cart.ProductID.Add(item.ProductID);
 				ShopDbContext.Instance.Cart.Add(cart);
 				ShopDbContext.Instance.SaveChanges();
+				
+				return;
 			}
-			else MessageBox.Show("Этот продукт уже добавлен в вашу корзину");
+
+			cart.ProductID.Add(item.ProductID);
+			ShopDbContext.Instance.SaveChanges();
+
+			MessageBox.Show("Продукт добавлен в корзину");
 		}
 
 		public void OpenCart(object sender, EventArgs e)

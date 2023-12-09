@@ -25,17 +25,20 @@ namespace BookShopWPF.Migrations
 
             modelBuilder.Entity("BookShopWPF.Cart", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserID"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
 
                     b.Property<List<int>>("ProductID")
                         .IsRequired()
                         .HasColumnType("integer[]");
 
-                    b.HasKey("UserID");
+                    b.Property<int>("UserID")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID");
 
                     b.ToTable("Cart");
                 });
@@ -182,7 +185,7 @@ namespace BookShopWPF.Migrations
             modelBuilder.Entity("BookShopWPF.ProductPhoto", b =>
                 {
                     b.HasOne("BookShopWPF.Product", "Product")
-                        .WithMany("ProductPhotos")
+                        .WithMany()
                         .HasForeignKey("ProductID1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -193,11 +196,6 @@ namespace BookShopWPF.Migrations
             modelBuilder.Entity("BookShopWPF.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("BookShopWPF.Product", b =>
-                {
-                    b.Navigation("ProductPhotos");
                 });
 #pragma warning restore 612, 618
         }

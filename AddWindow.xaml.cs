@@ -189,7 +189,12 @@ namespace BookShopWPF
 			}
 		}
 
-		public void Cancel(object sender, EventArgs e)
+		private void NameBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+		{
+
+        }
+
+        public void Cancel(object sender, EventArgs e)
 		{
 			this.Close();
 		}

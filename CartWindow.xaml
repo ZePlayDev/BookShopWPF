@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="CartWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" SelectionMode="Extended" CanUserResizeRows="False" CanUserSortColumns="True" CanUserAddRows="False" Margin="0,0,0,85" Height="349" VerticalAlignment="Bottom">
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" SelectionMode="Extended" CanUserResizeRows="False" CanUserSortColumns="True" CanUserAddRows="False" Height="349" VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ProductID}" Width="*" MaxWidth="35" MinWidth="15" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*" MinWidth="120" IsReadOnly="True"/>

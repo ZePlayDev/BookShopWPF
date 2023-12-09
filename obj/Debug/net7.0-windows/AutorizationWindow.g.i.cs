@@ -84,7 +84,7 @@ namespace BookShopWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BookShopWPF;component/autorizationwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BookShopWPF;V1.0.0.0;component/autorizationwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AutorizationWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

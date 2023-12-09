@@ -60,6 +60,8 @@ namespace BookShopWPF
 	public class Cart
 	{
 		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public int ID { get; set; }
 		public int UserID { get; set; }
 		public List<int> ProductID { get; set; }
 	}
